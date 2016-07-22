@@ -1,0 +1,106 @@
+%%
+%% This is file `pokemon.sty'.
+%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pokemon}
+\usepackage{tikz}
+\makeatletter
+\newcommand{\MonsterBall}[1]{
+\begin{tikzpicture}[scale=#1,baseline=(X.base)]
+  \coordinate(X)at(0,-6pt);
+  \filldraw[red,draw=red](1:7.8pt)arc(1:179:7.8pt)--cycle;
+  \filldraw[white,draw=white](-1:7.8pt)arc(-1:-179:7.8pt)--cycle;
+  % \filldraw[red,draw=red](5:7.8pt)arc(5:175:7.8pt)--cycle;
+  \draw[line width=0.6pt*#1,black](0,0)circle[radius=8pt];
+  \draw[line width=0.6pt*#1,black](180:8pt)--(0:8pt);
+  \filldraw[line width=0.6pt*#1,draw=black,fill=white](0,0)circle[radius=3pt];
+  \filldraw[line width=0.1pt,fill=gray,draw=black](0,0)circle[radius=1.0pt];
+\end{tikzpicture}%
+}
+\newcommand{\SuperBall}[1]{
+\begin{tikzpicture}[scale=#1,baseline=(X.base)]
+  \coordinate(X)at(0,-6pt);
+  \filldraw[cyan,draw=cyan](1:7.8pt)arc(1:179:7.8pt)--cycle;;
+  \filldraw[white,draw=white](-1:7.8pt)arc(-1:-179:7.8pt)--cycle;
+  % \filldraw[red](35:8pt)--(35:4.5pt)--(55:4.5pt)--(55:8pt)--cycle;
+  \filldraw[red](35:4.5pt)--(55:4.5pt)--(55:7.9pt)arc(55:35:7.9pt)--cycle;
+  % \filldraw[red](145:8pt)--(145:4.5pt)--(125:4.5pt)--(125:8pt)--cycle;
+  \filldraw[red](145:4.5pt)--(125:4.5pt)--(125:7.9pt)arc(125:145:7.9pt)--cycle;
+  \draw[line width=0.6pt*#1,black](0,0)circle[radius=8pt];
+  \draw[line width=0.6pt*#1,black](180:8pt)--(0:8pt);
+  \filldraw[line width=0.6pt*#1,draw=black,fill=white](0,0)circle[radius=3pt];
+  \filldraw[line width=0.1pt,fill=gray,draw=black](0,0)circle[radius=1.0pt];
+\end{tikzpicture}%
+}
+\newcommand{\HyperBall}[1]{
+\begin{tikzpicture}[scale=#1,baseline=(X.base)]
+  \coordinate(X)at(0,-6pt);
+  \filldraw[black](1:7.8pt)arc(1:179:7.8pt)--cycle;;
+  \filldraw[white,draw=white](-1:7.8pt)arc(-1:-179:7.8pt)--cycle;
+  % \filldraw[yellow](35:8pt)--(35:4.5pt)--(55:4.5pt)--(55:8pt)--cycle;
+  % \filldraw[yellow](145:8pt)--(145:4.5pt)--(125:4.5pt)--(125:8pt)--cycle;
+  \filldraw[yellow](-6.0pt,0.6pt)rectangle(-4.4pt,5.2pt);
+  \filldraw[yellow](6.0pt,0.6pt)rectangle(4.4pt,5.2pt);
+  \filldraw[yellow](135:6pt)arc(135:45:6pt)--(45:7.9pt)arc(45:135:7.9pt)--cycle;
+  % \filldraw[yellow](135:6pt)arc(135:45:6pt)--(45:7.9pt)arc(45:135:7.9pt)--cycle;
+  \draw[line width=0.6pt*#1,black](0,0)circle[radius=8pt];
+  \draw[line width=0.6pt*#1,black](180:8pt)--(0:8pt);
+  \filldraw[line width=0.6pt*#1,draw=black,fill=white](0,0)circle[radius=3pt];
+  \filldraw[line width=0.1pt,fill=gray,draw=black](0,0)circle[radius=1.0pt];
+\end{tikzpicture}%
+}
+\newcommand{\MasterBall}[1]{%
+\definecolor{MBALL}{rgb}{0.6, 0.4, 0.8}
+\begin{tikzpicture}[scale=#1,baseline=(X.base)]
+  \coordinate(X)at(0,-6pt);
+  \filldraw[fill=MBALL,draw=MBALL](1:7.8pt)arc(1:179:7.8pt)--cycle;;
+  \filldraw[white,draw=white](-1:7.8pt)arc(-1:-179:7.8pt)--cycle;
+  \draw[white,line width=0.6pt*#1*0.8](120:4.4pt)--(105:6.0pt)--(90:4.9pt)--(75:6.0pt)--(60:4.4pt);
+  \filldraw[red](115:7.8pt)to[out=-100,in=0](150:7.8pt)arc(150:115:7.8pt);
+  \filldraw[red](65:7.8pt)to[out=-80,in=180](30:7.8pt)arc(30:65:7.8pt);
+  \draw[line width=0.6pt*#1,black](0,0)circle[radius=8pt];
+  \draw[line width=0.6pt*#1,black](180:8pt)--(0:8pt);
+  \filldraw[line width=0.6pt*#1,draw=black,fill=white](0,0)circle[radius=3pt];
+  \filldraw[line width=0.1pt,fill=gray,draw=black](0,0)circle[radius=1.0pt];
+\end{tikzpicture}%
+}
+\newcommand{\Mballitem}{\MonsterBall{0.5}}
+\newcommand{\Mballiitem}{\SuperBall{0.5}}
+\newcommand{\Mballiiitem}{\HyperBall{0.5}}
+\newcommand{\Mballiiiitem}{\MasterBall{0.5}}
+%
+\newcommand{\pokebackground}[2]{%
+\begin{tikzpicture}[scale=#1]
+  \filldraw[fill=gray,draw=gray,opacity=#2](0,0)circle[radius=2cm*0.75];
+  \filldraw[white](0,0)circle[radius=2cm*0.35];
+  \filldraw[white](2cm*-0.76,2cm*-0.075)rectangle(2cm*0.76,2cm*0.075);
+  \filldraw[fill=gray,draw=gray,opacity=#2](0,0)circle[radius=2cm*0.20];
+\end{tikzpicture}%
+}
+% \newcommand{\HPline}[1]{%
+% \begin{tikzpicture}[scale=#1]
+% \pgfmathtruncatemacro\one{\insertframenumber}
+% \pgfmathtruncatemacro\two{\inserttotalframenumber}
+%   \filldraw[line width=0.4cm*#1,rounded corners=0.2cm,black](0,0)--(6cm,0);
+%   % \filldraw[line width=0.4cm*#1,rounded corners=0.2cm,green](0,0)--(6cm*\one/\two,0);
+%   \ifnum\one<\two*0.2%
+%     \filldraw[line width=0.4cm*#1,rounded corners=0.2cm,red](0,0)--(6cm*\one/\two,0);
+%   \else%
+%     \ifnum\one<\two*0.5
+%       \filldraw[line width=0.4cm*#1,rounded corners=0.2cm,yellow](0,0)--(6cm*\one/\two,0);
+%     \else
+%       \filldraw[line width=0.4cm*#1,rounded corners=0.2cm,blue](0,0)--(6cm*\one/\two,0);
+%     \fi
+%   \fi%
+% \end{tikzpicture}
+% }
+\newcommand{\pokemongoplus}[1]{%
+% \begin{tikzpicture}[scale=#1]
+%   \draw[rounded corners](-85:2)to[out=80,in=-135](-45:1)arc(-45:225:1)to[out=-45]cycle;
+%   % \draw(90:1)arc(90:180:1)to(-90:2)to(0:1)arc(0:90:1)--cycle;
+% \end{tikzpicture}%
+}
+\makeatother
+%
+%%
+%% End of file `pokemon.sty'.

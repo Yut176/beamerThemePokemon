@@ -1,0 +1,170 @@
+% Copyright 2016 by Yuto Shimizu
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+
+\mode<presentation>
+
+\PassOptionsToPackage{left}{beamerouterthemesidebar}
+\PassOptionsToPackage{width=2cm}{beamerouterthemesidebar}
+
+\DeclareOptionBeamer{hideothersubsections}{\PassOptionsToPackage{hideothersubsections=#1}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{hideallsubsections}{\PassOptionsToPackage{hideallsubsections=#1}{beamerouterthemesidebar}}
+
+\DeclareOptionBeamer{width}{\PassOptionsToPackage{width=#1}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{left}{\PassOptionsToPackage{left}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{right}{\PassOptionsToPackage{right}{beamerouterthemesidebar}}
+
+
+\useoutertheme[height=2em]{sidebar}
+\useinnertheme[shadow=true]{rounded}
+\usecolortheme{Valor}
+\newcommand{\LOGONAME}{logo_valor.png}
+
+%
+\DeclareOptionBeamer{valor}{
+\usecolortheme{Valor}%
+\renewcommand{\LOGONAME}{logo_valor.png}
+% \institute{\includegraphics[width=3cm]{logo_valor.png}}%
+}
+\DeclareOptionBeamer{instinct}{%
+\usecolortheme{Instinct}%
+\renewcommand{\LOGONAME}{logo_instinct.png}
+% \institute{\includegraphics[width=3cm]{logo_instinct.png}}%
+}
+\DeclareOptionBeamer{mystic}{%
+\usecolortheme{Mystic}%
+\renewcommand{\LOGONAME}{logo_mystic.png}
+% \institute{\includegraphics[width=3cm]{logo_mystic.png}}%
+}
+\logo{\includegraphics[width=1.8cm]{\LOGONAME}}%
+
+\ProcessOptionsBeamer
+
+\setbeamertemplate{footline}[page number]{}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamercolor{sidebar}{parent=palette primary}
+
+{\usebeamercolor{palette quaternary}}
+{\usebeamercolor{palette primary}}
+
+% \setbeamercolor*{frametitle}{parent=palette primary}
+% \setbeamerfont{block title}{size={}}
+
+% \setbeamertemplate{sidebar canvas \beamer@sidebarside}[vertical shading][bottom=palette primary.bg,top=palette primary.bg]
+\setbeamertemplate{sidebar canvas \beamer@sidebarside}[vertical shading][bottom=my@colorB,top=palette primary.bg]
+
+\makeatletter
+\colorlet{titleright}{my@colorB}
+\colorlet{titlemid}{my@colorA}
+\colorlet{titleleft}{my@colorA}
+\pgfdeclarehorizontalshading[titleleft,titleright]{beamer@frametitleshade}{\paperheight}{%
+  color(\beamer@sidebarwidth)=(titlemid);%
+  color(\paperwidth)=(titleright)%
+}
+
+\pgfdeclareverticalshading[titleleft,titleright]{beamer@sidebar}{\beamer@sidebarwidth}{%
+  color(0pt)=(titleright);%
+  color(\sidebarheight)=(titleleft)%
+}
+\setbeamertemplate{headline}{%
+  \begin{beamercolorbox}[wd=\paperwidth]{frametitle}%
+    \ifx\beamer@sidebarside\beamer@lefttext%
+    \else%
+    \hfill%
+    \fi%
+    \ifdim\beamer@sidebarwidth>0pt%
+    \usebeamercolor[fg]{logo}%
+    \begin{pgfpicture}{0pt}{0pt}{\paperwidth}{\beamer@headheight}%
+      \usebeamercolor{frametitle right}%
+      \pgfpathrectangle{\pgfpointorigin}{\pgfpoint{\paperwidth}{\beamer@headheight}}%
+      \pgfusepath{clip}%
+      \pgftext[left,base]{\pgfuseshading{beamer@frametitleshade}}%
+    \end{pgfpicture}%
+    \vskip-\beamer@headheight%
+    \vrule width\beamer@sidebarwidth height \beamer@headheight%
+    \hskip-\beamer@sidebarwidth%
+    \hbox to \beamer@sidebarwidth{\hss\vbox to
+      \beamer@headheight{\vss\hbox{\color{fg}}\vss}\hss}%
+    \else%
+    \vrule width0pt height \beamer@headheight%
+    \fi%
+  \end{beamercolorbox}%
+}
+\makeatother
+
+%
+\usepackage{pokemon}
+%
+\usepackage{enumitem}
+\renewlist{itemize}{itemize}{6}
+\setlist[itemize]{label=\MonsterBall{0.5}, labelsep=5pt, leftmargin=1em}
+\setlist[itemize, 1]{label=\MonsterBall{0.5},leftmargin=2em}
+\setlist[itemize, 2]{label=\SuperBall{0.5}}
+\setlist[itemize, 3]{label=\HyperBall{0.5}}
+\setlist[itemize, 4]{label=\MasterBall{0.5}}
+%
+\setbeamertemplate{itemize item}{\Mballitem}
+\setbeamertemplate{itemize subitem}{\SuperBall{0.5}}
+\setbeamertemplate{itemize subsubitem}{\HyperBall{0.5}}
+\setbeamertemplate{itemize subsubsubitem}{\MasterBall{0.5}}
+\setbeamertemplate{background canvas}{%
+\begin{tikzpicture}
+  \node[draw,very thick,minimum width=\paperwidth-\pgflinewidth+2cm,minimum height=\paperheight-\pgflinewidth+2em] [anchor=north west] (mynode) {\pokebackground{2}{0.15}};
+  \node[very thick,minimum width=\paperwidth-\pgflinewidth+2cm,minimum height=\paperheight-\pgflinewidth+2em] [anchor=north west] at(4.3,-3.15) {\includegraphics[width=1.8cm]{\LOGONAME}};
+\end{tikzpicture}%
+}
+
+\def\HPline#1{%
+\begin{tikzpicture}[scale=#1]
+\pgfmathsetmacro\one{\insertframenumber}
+\pgfmathsetmacro\two{\inserttotalframenumber}
+\pgfmathsetmacro\thr{int(\inserttotalframenumber*0.2+0.1)}
+\pgfmathsetmacro\fou{int(\inserttotalframenumber*0.5+0.1)}
+  \filldraw[line width=0.4cm*#1,rounded corners=0.2cm,black](0,0)--(8cm,0);
+  % \filldraw[line width=0.4cm*#1,rounded corners=0.2cm,green](0,0)--(8cm*\one/\two,0);
+  \ifnum\one<\thr%
+    \filldraw[line width=0.4cm*#1,rounded corners=0.2cm,red](0,0)--(8cm*\one/\two,0);
+  \else%
+    \ifnum\one=\thr%
+      \filldraw[line width=0.4cm*#1,rounded corners=0.2cm,red](0,0)--(8cm*\one/\two,0);
+    \else%
+      \ifnum\one<\fou%
+        \filldraw[line width=0.4cm*#1,rounded corners=0.2cm,yellow](0,0)--(8cm*\one/\two,0);
+      \else
+        \ifnum\one=\fou%
+          \filldraw[line width=0.4cm*#1,rounded corners=0.2cm,yellow](0,0)--(8cm*\one/\two,0);
+        \else%
+          \filldraw[line width=0.4cm*#1,rounded corners=0.2cm,green](0,0)--(8cm*\one/\two,0);
+        \fi
+      \fi
+    \fi
+  \fi%
+  % \node at(0,0){\one--\thr--\fou};
+  \node[right] at(0,1.4cm){\insertshortauthor};
+\end{tikzpicture}
+}
+\setbeamertemplate{footline}{
+\ifnum\inserttotalframenumber<10%
+  \ifnum\insertframenumber<10%
+  \quad\hfill\HPline{0.1}0\insertframenumber/0\inserttotalframenumber\strut\quad~%
+  \else%
+  \quad\hfill\HPline{0.1}\insertframenumber/0\inserttotalframenumber\strut\quad~%
+  \fi
+\else%
+  \ifnum\insertframenumber<10%
+  \quad\hfill\HPline{0.1}0\insertframenumber/\inserttotalframenumber\strut\quad~%
+  \else%
+  \quad\hfill\HPline{0.1}\insertframenumber/\inserttotalframenumber\strut\quad~%
+  \fi
+\fi
+}
+
+\mode
+<all>

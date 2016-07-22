@@ -1,0 +1,60 @@
+% The Valor Beamer Color Theme ver. 0.00 (2016/07/20)
+% Copyright 2016 by Yuto Shimizu
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+
+\mode<presentation>
+
+\definecolor{valorred}{RGB}{225,39,42}
+\definecolor{valorbody}{RGB}{241,177,57}
+\definecolor{pokemonblack}{RGB}{0,0,0}
+\definecolor{pokemonwhite}{RGB}{255,255,255}
+
+\colorlet{my@colorA}{valorred}
+\colorlet{my@colorB}{my@colorA!50!pokemonblack}
+
+\setbeamercolor*{logo}{fg=my@colorA,bg=black}
+
+\setbeamercolor*{normal text}{fg=black,bg=pokemonwhite}
+\setbeamercolor*{alerted text}{fg=red}
+\setbeamercolor*{example text}{fg=black}
+\setbeamercolor*{structure}{fg=valorbody, bg=pokemonwhite}
+
+
+\setbeamercolor*{palette primary}{fg=pokemonwhite,bg=my@colorA}
+\setbeamercolor*{palette secondary}{fg=pokemonwhite,bg=pokemonblack}
+\setbeamercolor*{palette tertiary}{fg=pokemonwhite,bg=my@colorA}
+\setbeamercolor*{palette quaternary}{fg=pokemonwhite,bg=black}
+
+\setbeamercolor{titlelike}{fg=pokemonwhite, bg=my@colorA}
+\setbeamercolor{frametitle}{fg=pokemonwhite, bg=my@colorA}
+\setbeamercolor{frametitle right}{fg=pokemonwhite, bg=my@colorA}
+
+\setbeamercolor{sidebar}{bg=pokemonblack}
+
+\setbeamercolor*{palette sidebar primary}{fg=pokemonwhite}
+\setbeamercolor*{palette sidebar secondary}{fg=pokemonwhite}
+\setbeamercolor*{palette sidebar tertiary}{fg=pokemonwhite}
+\setbeamercolor*{palette sidebar quaternary}{fg=pokemonwhite}
+
+\setbeamercolor*{item projected}{fg=pokemonwhite,bg=my@colorA}
+
+\setbeamercolor{block title}{fg=pokemonwhite,bg=valorbody}
+\setbeamercolor{block title alerted}{use=alerted text,fg=pokemonwhite,bg=alerted text.fg!75!black}
+\setbeamercolor{block title example}{use=example text,fg=pokemonwhite,bg=example text.fg!75!black}
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!15!bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!15!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!15!bg}
+
+\setbeamercolor{section in toc}{fg=my@colorA!50!black}
+\setbeamercolor{subsection in toc}{fg=black}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+\mode
+<all>
