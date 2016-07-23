@@ -1,14 +1,21 @@
 \documentclass[10pt,dvipdfmx]{beamer}
-% \usetheme[valor]{Pokemon}
-% \usetheme[instinct]{Pokemon}
-\usetheme[mystic]{Pokemon}
+% Option でテーマを選ぶ
+\usetheme[valor]{Pokemon}% ファイヤー
+% \usetheme[instinct]{Pokemon}% サンダー
+% \usetheme[mystic]{Pokemon}% フリーザー
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 右下のゲージを消す
+% 右下の名前とゲージを消す.
 % \setbeamertemplate{footline}{}
+% 背景の透過率を変更する.
+% \setbeamertemplate{background canvas}{\backgroundopacity{0.05}}%
+  % 背景のみを消したいときは
+  % \setbeamertemplate{background canvas}{\backgroundopacity{0.00}}%
+  % 背景と右下のシンボルを消したいときは
+  % \setbeamertemplate{background canvas}{}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title[ShortTitle]{LongTitle}
-\author[John]{John Doe}
-\institute[SIT]{Shibaura Univ}
+\title[短いタイトル]{長いタイトル}
+\author[name]{著者名}
+\institute[所属]{所属}
 \date{\today}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -22,9 +29,9 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{huga}
-  % \HPline{1}\\
-  % \pokemongoplus{1}\\
+  \section{1つめのセクション}
+  \frametitle{1つめのフレーム}
+  % 以下のコマンドでボールがでる
   \MonsterBall{1}%
   \MonsterBall{0.5}%
   \SuperBall{1}%
@@ -33,41 +40,47 @@
   \HyperBall{0.5}%
   \MasterBall{1}
   \MasterBall{0.5}
+
+  % itemize をネストしていくとボールのランクが上がっていく
   \begin{itemize}
     \item aaa
     \item bbb
     \begin{itemize}
-      \item bbc
+      \item ccc
       \begin{itemize}
-        \item bdd
+        \item ddd
         \begin{itemize}
-          \item asd
+          \item eee
         \end{itemize}
       \end{itemize}
     \end{itemize}
   \end{itemize}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \section{aaa}
-  \frametitle{hoge}
-  \alert{alert}\\
-  \structure{struc}
+  \section{2つめのセクション}
+  \frametitle{2つめのフレーム}
+  alertの色は\alert{alert}\\
+  structureの色は\structure{structure}
+
   \begin{itemize}
     \item あああ
     \item いいい
     \item ううう
   \end{itemize}
+
   \begin{itemize}
-    \item[\Mballitem] あああああああああああああああ
-    \item[\Mballitem] いいいああああああああああああ
-    \item[\Mballiitem] うううああああああああああああ
-    \item[\Mballiiiitem] うううああああああああああああ
+    \item[\Mballitem] モンスターボール
+    \item[\Mballiiitem] ハイパーボール
+    \item[\Mballiitem] スーパーボール
+    \item[\Mballiiiitem] マスターボール
   \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \section{bbb}
+  \section{3つめのセクション}
+  ブロックはこんな感じにでます.
   \begin{block}
     aaaaa
   \end{block}
@@ -83,15 +96,8 @@
   \begin{exampleblock}
     cccccs
   \end{exampleblock}
-  % \begin{exampleblock}
-  %   cccd
-  % \end{exampleblock}
-  % \begin{exampleblock}
-  %   cccce
-  % \end{exampleblock}
 \end{frame}
 \frame{}
-% \frame{}
 \frame{}
 \frame{}
 \frame{}
